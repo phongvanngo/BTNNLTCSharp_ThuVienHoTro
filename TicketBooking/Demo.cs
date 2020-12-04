@@ -16,6 +16,8 @@ using ZXing;
 using System.IO;
 using TicketBooking.Properties;
 
+using QRCoder;
+
 namespace TicketBooking
 {
     public partial class Demo : Form

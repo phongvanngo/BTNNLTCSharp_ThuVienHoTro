@@ -124,6 +124,7 @@
             this.comboBox_SeatType.Name = "comboBox_SeatType";
             this.comboBox_SeatType.Size = new System.Drawing.Size(216, 33);
             this.comboBox_SeatType.TabIndex = 18;
+            this.comboBox_SeatType.SelectedIndexChanged += new System.EventHandler(this.comboBox_SeatType_SelectedIndexChanged);
             // 
             // label6
             // 

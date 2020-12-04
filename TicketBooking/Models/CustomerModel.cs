@@ -14,6 +14,7 @@ namespace TicketBooking.Models
         public string QRCode { get; set; }
         public string SeatType { get; set; }
         public string DateCreated { get; set; }
-        public int Total { get; set; }
+        public string Email { get; set; }
+        public double Total { get; set; }
     }
 }
