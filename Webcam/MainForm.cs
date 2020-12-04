@@ -15,11 +15,11 @@ using Emgu.CV.CvEnum;
 
 namespace Webcam
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private Capture cap;
         Timer myTimer = new Timer();
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             cap = new Capture(0);
@@ -33,7 +33,10 @@ namespace Webcam
         {
             Image<Bgr, byte> nextFrame = cap.QueryFrame();
             Image<Gray, byte> grayFrame = nextFrame.Convert<Gray, byte>();
-            pictureBox_whiteAndBlack.Image = grayFrame.ToBitmap();
+
+            nextFrame = nextFrame.Flip(FLIP.HORIZONTAL);
+
+            //pictureBox_whiteAndBlack.Image = grayFrame.ToBitmap();
             pictureBox_color.Image = nextFrame.ToBitmap();
             
         }

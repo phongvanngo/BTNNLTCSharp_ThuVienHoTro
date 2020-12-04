@@ -1,6 +1,6 @@
 ﻿namespace Webcam
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,33 +29,25 @@
         private void InitializeComponent()
         {
             this.pictureBox_color = new System.Windows.Forms.PictureBox();
-            this.pictureBox_whiteAndBlack = new System.Windows.Forms.PictureBox();
             this.button_start = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_color)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_whiteAndBlack)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox_color
             // 
-            this.pictureBox_color.Location = new System.Drawing.Point(47, 36);
+            this.pictureBox_color.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox_color.Location = new System.Drawing.Point(47, 12);
             this.pictureBox_color.Name = "pictureBox_color";
-            this.pictureBox_color.Size = new System.Drawing.Size(357, 266);
+            this.pictureBox_color.Size = new System.Drawing.Size(1206, 637);
             this.pictureBox_color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox_color.TabIndex = 0;
             this.pictureBox_color.TabStop = false;
             // 
-            // pictureBox_whiteAndBlack
-            // 
-            this.pictureBox_whiteAndBlack.Location = new System.Drawing.Point(442, 36);
-            this.pictureBox_whiteAndBlack.Name = "pictureBox_whiteAndBlack";
-            this.pictureBox_whiteAndBlack.Size = new System.Drawing.Size(357, 266);
-            this.pictureBox_whiteAndBlack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox_whiteAndBlack.TabIndex = 1;
-            this.pictureBox_whiteAndBlack.TabStop = false;
-            // 
             // button_start
             // 
-            this.button_start.Location = new System.Drawing.Point(406, 326);
+            this.button_start.Location = new System.Drawing.Point(558, 692);
             this.button_start.Name = "button_start";
             this.button_start.Size = new System.Drawing.Size(75, 23);
             this.button_start.TabIndex = 2;
@@ -66,14 +58,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 450);
+            this.ClientSize = new System.Drawing.Size(1304, 727);
             this.Controls.Add(this.button_start);
-            this.Controls.Add(this.pictureBox_whiteAndBlack);
             this.Controls.Add(this.pictureBox_color);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_color)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_whiteAndBlack)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -81,7 +71,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox_color;
-        private System.Windows.Forms.PictureBox pictureBox_whiteAndBlack;
         private System.Windows.Forms.Button button_start;
     }
 }
