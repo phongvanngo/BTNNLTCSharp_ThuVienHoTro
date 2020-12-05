@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TicketBooking.Models
 {
-    class CustomerModel
+    public class CustomerModel
     {
         public string CustomerKey { get; set; }
         public string Name { get; set; }
