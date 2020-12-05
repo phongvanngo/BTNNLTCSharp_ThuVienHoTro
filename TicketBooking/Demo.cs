@@ -29,8 +29,7 @@ namespace TicketBooking
         {
             InitializeComponent();
             cap = new Capture(0);
-            myTimer.Interval = 500;
-
+            myTimer.Interval = 100;
             myTimer.Tick += MyTimer_Tick;
             myTimer.Start();
 
@@ -43,15 +42,22 @@ namespace TicketBooking
 
             nextFrame = nextFrame.Flip(FLIP.HORIZONTAL);
             QRCodeImage = nextFrame.ToBitmap();
-            //GetDataFromQRCode(QRCodeImage);9
+            pictureBox1.Image = QRCodeImage;
+            //myTimer.Stop();
+            GetDataFromQRCode(QRCodeImage);
 
-            var CurrentDirectory = System.Environment.CurrentDirectory;
-            string CurrentProjectD = Directory.GetParent(CurrentDirectory).Parent.FullName;
-            string mypath = CurrentProjectD + @"\CodeImage";
-            QRCodeImage.Save(mypath+ @"\code1.png");
 
-            myTimer.Stop();
-            pictureBox1.Image = Image.FromFile(mypath+ @"\code1.png");
+
+
+            //GetDataFromQRCode(Image.FromFile(@"C:\Users\19520\source\repos\BTNNLTCSharp_ThuVienHoTro\TicketBooking\CustomerImageData\qrcodeCLIENT8361e7b0.jpg"));
+
+            //var CurrentDirectory = System.Environment.CurrentDirectory;
+            //string CurrentProjectD = Directory.GetParent(CurrentDirectory).Parent.FullName;
+            //string mypath = CurrentProjectD + @"\CodeImage";
+            //QRCodeImage.Save(mypath+ @"\code1.png");
+
+            //myTimer.Stop();
+            //pictureBox1.Image = Image.FromFile(mypath+ @"\code1.png");
         }
 
         public void GetDataFromQRCode(Image MyQRCode)

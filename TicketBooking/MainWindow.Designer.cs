@@ -39,7 +39,7 @@
             this.panel_scanQrCode.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_scanQrCode.Location = new System.Drawing.Point(0, 0);
             this.panel_scanQrCode.Name = "panel_scanQrCode";
-            this.panel_scanQrCode.Size = new System.Drawing.Size(479, 1033);
+            this.panel_scanQrCode.Size = new System.Drawing.Size(494, 1033);
             this.panel_scanQrCode.TabIndex = 0;
             // 
             // panel_sidebar
@@ -55,9 +55,9 @@
             // 
             this.panel_FormBookingArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel_FormBookingArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_FormBookingArea.Location = new System.Drawing.Point(479, 0);
+            this.panel_FormBookingArea.Location = new System.Drawing.Point(494, 0);
             this.panel_FormBookingArea.Name = "panel_FormBookingArea";
-            this.panel_FormBookingArea.Size = new System.Drawing.Size(1274, 1033);
+            this.panel_FormBookingArea.Size = new System.Drawing.Size(1259, 1033);
             this.panel_FormBookingArea.TabIndex = 2;
             // 
             // MainWindow

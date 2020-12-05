@@ -49,7 +49,7 @@ namespace TicketBooking.Views
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             QRCode qrCode = new QRCode(qrGenerator.CreateQrCode(data,
             QRCodeGenerator.ECCLevel.Q));
-            picQRCode = qrCode.GetGraphic(2, Color.Black, Color.White, false);
+            picQRCode = qrCode.GetGraphic(8, Color.Black, Color.White, false);
             qrGenerator.Dispose();
             qrCode.Dispose();
             return picQRCode;
@@ -57,6 +57,14 @@ namespace TicketBooking.Views
 
         private void button1_submit_Click(object sender, EventArgs e)
         {
+
+            //check valid data
+            if (clientAvatar == null ||textBox_Name.Text == "" || textBox_email.Text =="")
+            {
+                MessageBox.Show("Dữ liệu đầu vào không hợp lệ");
+                return;
+            }
+
             CustomerModel newCustomer = new CustomerModel();
             newCustomer.Name = textBox_Name.Text;
             newCustomer.Email = textBox_email.Text;
@@ -75,10 +83,16 @@ namespace TicketBooking.Views
             Image clientQRCode = QRCodeImage(newCustomer.CustomerKey);
 
             clientAvatar.Save(CommonManager.ProjectDirectory() + avatarImagePath);
-            clientQRCode.Save(CommonManager.ProjectDirectory() + qrCodeImagePath);
 
             CustomerDataProvider.SaveCustomer(newCustomer);
+            Image clientQRCodee = QRCodeImage(newCustomer.CustomerKey);
+            Bitmap b = new Bitmap(400, 400);
+            Graphics g = Graphics.FromImage(b);
+            g.Clear(Color.White);
+            g.DrawImage(clientQRCode, 100, 100, 200, 200);
+            clientQRCode = (Image)b;
 
+            clientQRCode.Save(CommonManager.ProjectDirectory() + qrCodeImagePath);
             SendMail(newCustomer);
 
         }

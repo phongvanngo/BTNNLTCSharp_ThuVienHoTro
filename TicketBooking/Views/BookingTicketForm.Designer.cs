@@ -205,8 +205,9 @@
             // ovalPictureBox1_avatar
             // 
             this.ovalPictureBox1_avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.ovalPictureBox1_avatar.Image = ((System.Drawing.Image)(resources.GetObject("ovalPictureBox1_avatar.Image")));
-            this.ovalPictureBox1_avatar.InitialImage = ((System.Drawing.Image)(resources.GetObject("ovalPictureBox1_avatar.InitialImage")));
+            this.ovalPictureBox1_avatar.ErrorImage = global::TicketBooking.Properties.Resources.NoAvatar;
+            this.ovalPictureBox1_avatar.Image = global::TicketBooking.Properties.Resources.NoAvatar;
+            this.ovalPictureBox1_avatar.InitialImage = global::TicketBooking.Properties.Resources.NoAvatar;
             this.ovalPictureBox1_avatar.Location = new System.Drawing.Point(174, 79);
             this.ovalPictureBox1_avatar.Name = "ovalPictureBox1_avatar";
             this.ovalPictureBox1_avatar.Size = new System.Drawing.Size(233, 205);

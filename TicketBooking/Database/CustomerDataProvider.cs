@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TicketBooking.Models;
 
 namespace TicketBooking.Database
@@ -25,8 +26,17 @@ namespace TicketBooking.Database
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<CustomerModel>("select * from Drink", new DynamicParameters());
+                var output = cnn.Query<CustomerModel>("select * from Customer", new DynamicParameters());
                 return output.ToList();
+            }
+        }        
+        public static CustomerModel GetCustomer(string code)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string sqlcommand = $@"select * from Customer where CustomerKey = '{code}' ";
+                var output = cnn.Query<CustomerModel>(sqlcommand, new DynamicParameters());
+                if (output != null) return output.ToList()[0]; else return null;
             }
         }
         public static void SaveCustomer(CustomerModel Customer)
