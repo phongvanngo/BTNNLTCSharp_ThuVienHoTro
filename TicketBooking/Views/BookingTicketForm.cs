@@ -15,9 +15,11 @@ using System.Net.Mail;
 using System.Net.Mime;
 using System.IO;
 using System.Net;
+using System.Threading;
 
 namespace TicketBooking.Views
 {
+    public delegate void SendmailHandler(MailAddress mail);
     public partial class BookingTicketForm : UserControl
     {
         const int SEAT_A = 20000;
@@ -25,6 +27,8 @@ namespace TicketBooking.Views
         const int SEAT_C = 40000;
         private double TotalPay = 0;
         Image clientAvatar;
+        Thread ThreadLoading;
+        
         public static string GenerateCode()
         {
             return Guid.NewGuid().ToString().GetHashCode().ToString("x");
@@ -37,11 +41,24 @@ namespace TicketBooking.Views
         }
         public BookingTicketForm()
         {
+
+
             InitializeComponent();
             comboBox_SeatType.SelectedIndex = 0;
             TotalPay = SEAT_A;
             label_Total.Text = FormatMoney(TotalPay);
+
+            ThreadLoading = new Thread(ShowLoadingPage);
         }
+
+        public void ShowLoadingPage()
+        {
+            Loading loadingPage = new Loading();
+            loadingPage.ShowDialog();
+        }
+
+
+
 
         public static Image QRCodeImage(string data)
         {
@@ -59,11 +76,13 @@ namespace TicketBooking.Views
         {
 
             //check valid data
-            if (clientAvatar == null ||textBox_Name.Text == "" || textBox_email.Text =="")
+            if (clientAvatar == null || textBox_Name.Text == "" || textBox_email.Text == "")
             {
                 MessageBox.Show("Dữ liệu đầu vào không hợp lệ");
                 return;
             }
+
+            ThreadLoading.Start();
 
             CustomerModel newCustomer = new CustomerModel();
             newCustomer.Name = textBox_Name.Text;
@@ -93,11 +112,24 @@ namespace TicketBooking.Views
             clientQRCode = (Image)b;
 
             clientQRCode.Save(CommonManager.ProjectDirectory() + qrCodeImagePath);
-            SendMail(newCustomer);
+            try
+            {
+                SendMail(newCustomer);
+                MessageBox.Show("Gửi Mail xác nhận thành công");
+                textBox_email.Text = "";
+                textBox_Name.Text = "";
+                ovalPictureBox1_avatar.Image = null;
+                clientAvatar = null;
+                comboBox_SeatType.SelectedIndex = 0;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Gửi không thành công");
+            }
 
         }
 
-        public static void SendMail(CustomerModel customer)
+        public void SendMail(CustomerModel customer)
         {
             string messageBody = $@"
                                     <div style='width:100%'>
@@ -149,11 +181,13 @@ namespace TicketBooking.Views
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
             client.EnableSsl = true;
             client.Credentials = new NetworkCredential("novapohht@gmail.com", "ngovanphong");
+
+
+
+
             client.Send(mess);
 
-            MessageBox.Show("Gửi Mail xác nhận thành công");
-
-
+            ThreadLoading.Abort();
         }
 
         private void button_takePicture_Click(object sender, EventArgs e)
@@ -163,7 +197,6 @@ namespace TicketBooking.Views
             {
                 clientAvatar = myCamera.MyPicture;
                 ovalPictureBox1_avatar.Image = clientAvatar;
-
             }
             else
             {

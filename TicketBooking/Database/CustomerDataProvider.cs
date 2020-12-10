@@ -36,15 +36,17 @@ namespace TicketBooking.Database
             {
                 string sqlcommand = $@"select * from Customer where CustomerKey = '{code}' ";
                 var output = cnn.Query<CustomerModel>(sqlcommand, new DynamicParameters());
-                if (output != null) return output.ToList()[0]; else return null;
+                CustomerModel custome = output.ToList()[0];
+                if (output != null) return output.ToList()[0]; 
+                else return null;
             }
         }
         public static void SaveCustomer(CustomerModel Customer)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into Customer (CustomerKey,Name,Avatar,QRCode,SeatType,Total,DateCreated) " +
-                    "values(@CustomerKey,@Name,@Avatar,@QRCode,@SeatType,@Total,@DateCreated)"
+                cnn.Execute("insert into Customer (Email,CustomerKey,Name,Avatar,QRCode,SeatType,Total,DateCreated) " +
+                    "values(@Email,@CustomerKey,@Name,@Avatar,@QRCode,@SeatType,@Total,@DateCreated)"
                     , Customer);
             }
         }

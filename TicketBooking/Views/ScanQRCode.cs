@@ -30,8 +30,10 @@ namespace TicketBooking.Views
         {
             InitializeComponent();
 
-            myTimer.Interval = 300;
+            myTimer.Interval = 50;
             myTimer.Tick += MyTimer_Tick;
+
+            labelLoaiGhe.Text = "Loại chỗ ngồi";
         }
 
         private void MyTimer_Tick(object sender, EventArgs e)
@@ -59,9 +61,11 @@ namespace TicketBooking.Views
                 {
                     string decoded = result.ToString().Trim();
                     CustomerModel customer = CustomerDataProvider.GetCustomer(decoded);
+
                     if (customer != null)
                     {
                         cap.Dispose();
+                        myTimer.Stop();
                         label_email.Text = customer.Email;
                         label_dateCreated.Text = customer.DateCreated;
                         label_SeatType.Text = customer.SeatType;
@@ -70,14 +74,11 @@ namespace TicketBooking.Views
 
                         SuccessCheckInForm resultForm = new SuccessCheckInForm(customer);
 
-                        myTimer.Stop();
+                        
                         resultForm.ShowDialog();
                         while (resultForm.IsClose == false) { };
                         cap = new Capture(0);
                         myTimer.Start();
-
-
-
 
                     }
                 }

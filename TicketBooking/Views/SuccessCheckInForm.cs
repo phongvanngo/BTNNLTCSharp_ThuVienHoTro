@@ -14,7 +14,7 @@ namespace TicketBooking.Views
     {
         CustomerModel customer;
         Timer myTimer = new Timer();
-        int time_out = 1;
+        int time_out = 3;
         bool isClose = false;
         public SuccessCheckInForm(CustomerModel customer)
         {
@@ -24,7 +24,7 @@ namespace TicketBooking.Views
             myTimer.Tick += MyTimer_Tick;
             label_email.Text = customer.Email;
             label_dateCreated.Text = customer.DateCreated;
-            label_SeatType.Text = customer.SeatType;
+            label_Seat.Text = customer.SeatType;
             label1_name.Text = customer.Name;
             ovalPictureBox1_avatar.Image = Image.FromFile(CommonManager.ProjectDirectory() + customer.Avatar);
 
