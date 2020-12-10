@@ -20,19 +20,25 @@ using System.Threading;
 namespace TicketBooking.Views
 {
     public delegate void SendmailHandler(MailAddress mail);
+    public delegate void myDelegate();
     public partial class BookingTicketForm : UserControl
     {
-        const int SEAT_A = 20000;
-        const int SEAT_B = 30000;
-        const int SEAT_C = 40000;
+        const int SEAT_A = 150000;
+        const int SEAT_B = 200000;
+        const int SEAT_C = 350000;
         private double TotalPay = 0;
+        string EventJoin = "";
         Image clientAvatar;
         Thread ThreadLoading;
-        
+
+        private double TamTinh = 0;
+
         public static string GenerateCode()
         {
             return Guid.NewGuid().ToString().GetHashCode().ToString("x");
         }
+
+        public event myDelegate notify;
 
         public static string FormatMoney(double total)
         {
@@ -81,7 +87,8 @@ namespace TicketBooking.Views
                 MessageBox.Show("Dữ liệu đầu vào không hợp lệ");
                 return;
             }
-
+            
+            ThreadLoading = new Thread(ShowLoadingPage);
             ThreadLoading.Start();
 
             CustomerModel newCustomer = new CustomerModel();
@@ -95,7 +102,9 @@ namespace TicketBooking.Views
             newCustomer.Avatar = avatarImagePath;
             newCustomer.QRCode = qrCodeImagePath;
             newCustomer.Total = TotalPay;
+            newCustomer.ThoiGianSuKien = comboBox3_TimeAndPlace.Text;
             newCustomer.SeatType = comboBox_SeatType.Text;
+            newCustomer.SuKienThamDu = EventJoin;
             newCustomer.DateCreated = DateTime.Now.ToString();
 
 
@@ -133,9 +142,9 @@ namespace TicketBooking.Views
         {
             string messageBody = $@"
                                     <div style='width:100%'>
-                                        <div style='width: 80%;margin:auto'>
+                                        <div style='width: 100%;margin:auto'>
 
-                                            <h1>Bạn đã đặt vé thành công!</h1>
+                                            <h1>Bạn đã đặt vé tham dự VIET NAM WEB SUMMIT thành công!</h1>
                                             <p>Xin Chào <b>{customer.Name}</b>, cám ơn bạn đã đặt vé tham gia sự kiện</h1>
                                             </p>
                                             <h2>Thông tin vé của bạn</h2>
@@ -144,13 +153,33 @@ namespace TicketBooking.Views
                                                 <tr>
                                                     <th align='left' scope='row'>Tên </td>
                                                     <td>{customer.Name}</td>
-                                                </tr>
+                                                </tr>   
 
                                                 <tr>
                                                     <th align='left' scope='row'>Ngày giờ đặt vé </td>
                                                     <td>{customer.DateCreated}</td>
+                                                </tr>  
+
+                                                <tr>
+                                                    <td>{customer.DateCreated}</td>
+                                                    <td align='left' scope='row'> <b>Thông tin sự kiện</b></td>
+                                                </tr>  
+
+                                                <tr>
+                                                    <th align='left' scope='row'>Địa điểm và thời gian </td>
+                                                    <td>{customer.ThoiGianSuKien}</td>
                                                 </tr>
 
+   
+
+                                                <tr>
+                                                    <th align='left' scope='row'>Sự kiện tham gia </td>
+                                                    <td>
+ {customer.SuKienThamDu}   
+</td>
+                                                </tr>
+
+                                                                                
                                                 <tr>
                                                     <th align='left' scope='row'>Loại chỗ ngồi </td>
                                                     <td>{customer.SeatType}</td>
@@ -160,12 +189,15 @@ namespace TicketBooking.Views
                                                     <td>{customer.Total}</td>
                                                 </tr>
 
+
+
                                             </table>
                                             <p>Mã QRCode của bạn được đính kèm trong file bên dưới </h1>
                                             </p>
                                         </div>
                                     </div>
                                 ";
+
             string attachmentPath = CommonManager.ProjectDirectory() + customer.QRCode;
             Attachment QrCodeAttachment = new Attachment(attachmentPath);
             QrCodeAttachment.ContentDisposition.Inline = true;
@@ -182,12 +214,13 @@ namespace TicketBooking.Views
             client.EnableSsl = true;
             client.Credentials = new NetworkCredential("novapohht@gmail.com", "ngovanphong");
 
-
-
-
             client.Send(mess);
 
             ThreadLoading.Abort();
+
+            notify();
+
+
         }
 
         private void button_takePicture_Click(object sender, EventArgs e)
@@ -204,23 +237,77 @@ namespace TicketBooking.Views
             }
         }
 
+        public void TinhTien()
+        {
+            EventJoin = "";
+            TotalPay = TamTinh;
+            if (checkBox2.Checked)
+            {
+                TotalPay += 100000;
+                string dau = "<p>";
+                EventJoin += checkBox2.Text;
+                string cuoi = "</p>";
+                EventJoin = dau + EventJoin + cuoi;
+            }
+            if (checkBox3.Checked)
+            {
+                TotalPay += 100000;
+                string dau = "<p>";
+                EventJoin += checkBox3.Text;
+                string cuoi = "</p>";
+                EventJoin = dau + EventJoin + cuoi;
+            }
+            if (checkBox4.Checked)
+            {
+                TotalPay += 100000;
+
+                string dau = "<p>";
+                EventJoin += checkBox4.Text;
+                string cuoi = "</p>";
+                EventJoin = dau + EventJoin + cuoi;
+            }
+            if (checkBox5.Checked)
+            {
+                TotalPay += 100000;
+                string dau = "<p>";
+                EventJoin += checkBox5.Text;
+                string cuoi = "</p>";
+                EventJoin = dau + EventJoin + cuoi;
+            }
+            if (checkBox1.Checked)
+            {
+                TotalPay += 100000;
+                string dau = "<p>";
+                EventJoin += checkBox1.Text;
+                string cuoi = "</p>";
+                EventJoin = dau + EventJoin + cuoi;
+            }
+
+            label_Total.Text = FormatMoney(TotalPay);
+        }
+
         private void comboBox_SeatType_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBox_SeatType.Text)
             {
-                case "A":
-                    TotalPay = SEAT_A;
+                case "Hạng A":
+                    TamTinh = SEAT_A;
                     break;
-                case "B":
-                    TotalPay = SEAT_B;
+                case "Hạng B":
+                    TamTinh = SEAT_B;
                     break;
-                case "C":
-                    TotalPay = SEAT_C;
+                case "Hạng C":
+                    TamTinh = SEAT_C;
                     break;
                 default:
                     break;
             }
-            label_Total.Text = FormatMoney(TotalPay);
+            TinhTien();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            TinhTien();
         }
     }
 }

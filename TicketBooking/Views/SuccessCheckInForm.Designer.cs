@@ -135,7 +135,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "SuccessCheckInForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SuccessCheckInForm";
+            this.Text = "Xác nhận mua vé";
             this.Load += new System.EventHandler(this.SuccessCheckInForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox1_avatar)).EndInit();
             this.ResumeLayout(false);

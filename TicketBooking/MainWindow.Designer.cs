@@ -71,7 +71,7 @@
             this.MinimumSize = new System.Drawing.Size(1918, 1040);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BookingTickerWindow";
+            this.Text = "Chương trình đặt vé";
             this.ResumeLayout(false);
 
         }

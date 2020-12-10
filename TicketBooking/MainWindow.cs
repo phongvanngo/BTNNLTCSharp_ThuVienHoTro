@@ -20,8 +20,15 @@ namespace TicketBooking
             InitializeComponent();
             bookingForm.Dock = DockStyle.Fill;
             scanQRCodeArea.Dock = DockStyle.Fill;
+
+            bookingForm.notify += BookingForm_notify;
             panel_scanQrCode.Controls.Add(scanQRCodeArea);
             panel_FormBookingArea.Controls.Add(bookingForm);
+        }
+
+        private void BookingForm_notify()
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

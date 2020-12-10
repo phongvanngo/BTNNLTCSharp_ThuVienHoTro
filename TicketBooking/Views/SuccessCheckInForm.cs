@@ -27,8 +27,8 @@ namespace TicketBooking.Views
             label_Seat.Text = customer.SeatType;
             label1_name.Text = customer.Name;
             ovalPictureBox1_avatar.Image = Image.FromFile(CommonManager.ProjectDirectory() + customer.Avatar);
-
-            myTimer.Start();
+            
+            //myTimer.Start();
 
         }
 

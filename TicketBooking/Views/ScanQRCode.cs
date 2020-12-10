@@ -73,17 +73,22 @@ namespace TicketBooking.Views
                         ovalPictureBox1_avatar.Image = Image.FromFile(CommonManager.ProjectDirectory() + customer.Avatar);
 
                         SuccessCheckInForm resultForm = new SuccessCheckInForm(customer);
-
+                        resultForm.FormClosed += ResultForm_FormClosed;
                         
                         resultForm.ShowDialog();
-                        while (resultForm.IsClose == false) { };
-                        cap = new Capture(0);
-                        myTimer.Start();
+                        //while (resultForm.IsClose == false) { };
+
 
                     }
                 }
 
             }
+        }
+
+        private void ResultForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            cap = new Capture(0);
+            myTimer.Start();
         }
 
         private void button1_scan_Click(object sender, EventArgs e)

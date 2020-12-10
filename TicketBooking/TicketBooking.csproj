@@ -228,6 +228,7 @@
     <Content Include="bin\Debug\ZedGraph.license.txt" />
     <Content Include="bin\Debug\zlib.net.dll" />
     <Content Include="bin\Debug\zlib.net.license.txt" />
+    <None Include="Resources\vnwebsubmit.jpg" />
     <None Include="Resources\Loading.gif" />
     <None Include="Resources\NoAvatar.png" />
     <None Include="Resources\camera.png" />

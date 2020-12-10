@@ -39,12 +39,12 @@
             this.button1_scan = new System.Windows.Forms.Button();
             this.pictureBox1_scanQRCode = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ovalPictureBox1_avatar = new OvalPictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ovalPictureBox1_avatar = new OvalPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_scanQRCode)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox1_avatar)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox1_avatar)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -73,9 +73,9 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(40, 267);
+            this.label1.Location = new System.Drawing.Point(7, 257);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 41);
+            this.label1.Size = new System.Drawing.Size(134, 41);
             this.label1.TabIndex = 25;
             this.label1.Text = "Email";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -83,19 +83,19 @@
             // labelLoaiGhe
             // 
             this.labelLoaiGhe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLoaiGhe.Location = new System.Drawing.Point(40, 323);
+            this.labelLoaiGhe.Location = new System.Drawing.Point(2, 298);
             this.labelLoaiGhe.Name = "labelLoaiGhe";
-            this.labelLoaiGhe.Size = new System.Drawing.Size(90, 41);
+            this.labelLoaiGhe.Size = new System.Drawing.Size(151, 41);
             this.labelLoaiGhe.TabIndex = 26;
-            this.labelLoaiGhe.Text = "Loại ghế";
+            this.labelLoaiGhe.Text = "Loại chỗ ngồi";
             this.labelLoaiGhe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labell
             // 
             this.labell.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labell.Location = new System.Drawing.Point(40, 380);
+            this.labell.Location = new System.Drawing.Point(3, 339);
             this.labell.Name = "labell";
-            this.labell.Size = new System.Drawing.Size(114, 41);
+            this.labell.Size = new System.Drawing.Size(134, 41);
             this.labell.TabIndex = 27;
             this.labell.Text = "Ngày đặt vé";
             this.labell.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -106,9 +106,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_dateCreated.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_dateCreated.ForeColor = System.Drawing.Color.Red;
-            this.label_dateCreated.Location = new System.Drawing.Point(160, 380);
+            this.label_dateCreated.Location = new System.Drawing.Point(138, 339);
             this.label_dateCreated.Name = "label_dateCreated";
-            this.label_dateCreated.Size = new System.Drawing.Size(261, 41);
+            this.label_dateCreated.Size = new System.Drawing.Size(290, 41);
             this.label_dateCreated.TabIndex = 30;
             this.label_dateCreated.Text = "00:00";
             this.label_dateCreated.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -119,9 +119,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_SeatType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_SeatType.ForeColor = System.Drawing.Color.Red;
-            this.label_SeatType.Location = new System.Drawing.Point(164, 323);
+            this.label_SeatType.Location = new System.Drawing.Point(138, 298);
             this.label_SeatType.Name = "label_SeatType";
-            this.label_SeatType.Size = new System.Drawing.Size(226, 41);
+            this.label_SeatType.Size = new System.Drawing.Size(290, 41);
             this.label_SeatType.TabIndex = 29;
             this.label_SeatType.Text = "A";
             this.label_SeatType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -132,9 +132,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_email.ForeColor = System.Drawing.Color.Red;
-            this.label_email.Location = new System.Drawing.Point(164, 267);
+            this.label_email.Location = new System.Drawing.Point(134, 257);
             this.label_email.Name = "label_email";
-            this.label_email.Size = new System.Drawing.Size(257, 41);
+            this.label_email.Size = new System.Drawing.Size(294, 41);
             this.label_email.TabIndex = 28;
             this.label_email.Text = "*@gmail.com";
             this.label_email.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -178,6 +178,16 @@
             this.panel1.Size = new System.Drawing.Size(448, 435);
             this.panel1.TabIndex = 32;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button1_scan);
+            this.panel2.Controls.Add(this.pictureBox1_scanQRCode);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 45);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(448, 320);
+            this.panel2.TabIndex = 33;
+            // 
             // ovalPictureBox1_avatar
             // 
             this.ovalPictureBox1_avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -188,16 +198,6 @@
             this.ovalPictureBox1_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ovalPictureBox1_avatar.TabIndex = 22;
             this.ovalPictureBox1_avatar.TabStop = false;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.button1_scan);
-            this.panel2.Controls.Add(this.pictureBox1_scanQRCode);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 45);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(448, 320);
-            this.panel2.TabIndex = 33;
             // 
             // ScanQRCode
             // 
@@ -213,8 +213,8 @@
             this.Size = new System.Drawing.Size(448, 800);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_scanQRCode)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox1_avatar)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox1_avatar)).EndInit();
             this.ResumeLayout(false);
 
         }
